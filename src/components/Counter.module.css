@@ -20,3 +20,13 @@
   margin: 2rem 0;
   font-weight: bold;
 }
+
+.counter button {
+  background-color: #837cbb;
+  margin: 0.5rem;
+  font-size: 20px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
