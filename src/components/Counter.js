@@ -5,83 +5,89 @@ import { Component } from "react";
 
 
 // Functionnal Way Redux
-// const Counter = () => {
+const Counter = () => {
 
-//   // Action
-//   const dispatchFn = useDispatch();
+  // Action
+  const dispatchFn = useDispatch();
 
-//   // Counter State
-//   const counter =  useSelector((state) => {
-//     return state.counter;
-//   });
+  // Counter State
+  const counter =  useSelector((state) => {
+    return state.counter;
+  });
 
 
-//   // Dispatch Increment Function
-//   const incrementFn  = () => {
-//     dispatchFn({type: "increment"})
-//   };
+  // Dispatch Increment Function
+  const incrementFn  = () => {
+    dispatchFn({type: "increment"})
+  };
 
-//   // Dispatch Decrement Function
-//   const decrementFn  = () => {
-//     dispatchFn({type: "decrement"})
-//   };
+  // Dispatch Decrement Function
+  const decrementFn  = () => {
+    dispatchFn({type: "decrement"})
+  };
 
-//   const toggleCounterHandler = () => {};
+  const increaseHandler = () => {
+    dispatchFn({type: 'increase', number: 10})
+  }
 
-//   return (
-//     <main className={classes.counter}>
-//       <h1>Счётчик</h1>
-//       <div className={classes.value}>{counter}</div>
-//       <div>
-//         <button onClick={incrementFn}>+</button>
-//         <button onClick={decrementFn}>-</button>
-//       </div>
-//       <button onClick={toggleCounterHandler}>Спрятать / Показать</button>
-//     </main>
-//   );
-// };
+  const toggleCounterHandler = () => {};
+
+  return (
+    <main className={classes.counter}>
+      <h1>Счётчик</h1>
+      <div className={classes.value}>{counter}</div>
+      <div>
+        <button onClick={incrementFn}>+</button>
+        <button onClick={increaseHandler}>+10</button>
+        <button onClick={decrementFn}>-</button>
+      </div>
+      <button onClick={toggleCounterHandler}>Спрятать / Показать</button>
+    </main>
+  );
+};
 
 // Class Way Redux
-class Counter extends Component {
+// class Counter extends Component {
 
-  incrementFn(){
-    this.props.increment();
-  }
+//   incrementFn(){
+//     this.props.increment();
+//   }
 
-  decrementFn(){
-    this.props.decrement();
-  }
+//   decrementFn(){
+//     this.props.decrement();
+//   }
 
-  toggleCounterHandler(){
+//   toggleCounterHandler(){
 
-  }
+//   }
 
-    render(){
-      return (
-        <main className={classes.counter}>
-          <h1>Счётчик</h1>
-          <div className={classes.value}>{this.props.counter}</div>
-          <div>
-            <button onClick={this.incrementFn.bind(this)}>+</button>
-            <button onClick={this.decrementFn.bind(this)}>-</button>
-          </div>
-          <button onClick={this.toggleCounterHandler}>Спрятать / Показать</button>
-        </main>
-      );
-    };
-}
+//     render(){
+//       return (
+//         <main className={classes.counter}>
+//           <h1>Счётчик</h1>
+//           <div className={classes.value}>{this.props.counter}</div>
+//           <div>
+//             <button onClick={this.incrementFn.bind(this)}>+</button>
+//             <button onClick={this.decrementFn.bind(this)}>-</button>
+//           </div>
+//           <button onClick={this.toggleCounterHandler}>Спрятать / Показать</button>
+//         </main>
+//       );
+//     };
+// }
 
-const bindStateToProps =(state) => {
-  return{
-    counter: state.counter
-  }
-}
+// const bindStateToProps =(state) => {
+//   return{
+//     counter: state.counter
+//   }
+// }
 
-const bindDispatchToProps = (dispatch) => {
-  return {
-    increment: () => dispatch({type: "increment"}),
-    decrement: () => dispatch({type: "decrement"})
-  }
-}
+// const bindDispatchToProps = (dispatch) => {
+//   return {
+//     increment: () => dispatch({type: "increment"}),
+//     decrement: () => dispatch({type: "decrement"})
+//   }
+// }
 
-export default connect(bindStateToProps, bindDispatchToProps)(Counter);
+// export default connect(bindStateToProps, bindDispatchToProps)(Counter);
+export default Counter;
