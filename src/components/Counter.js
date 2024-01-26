@@ -10,11 +10,13 @@ const Counter = () => {
   // Action
   const dispatchFn = useDispatch();
 
-  // Counter State
+  // Counter State Selector
   const counter =  useSelector((state) => {
     return state.counter;
   });
 
+  // Counter Visibility Selector
+  const isCounterInvisible = useSelector(state => state.isCounterInvisible);
 
   // Dispatch Increment Function
   const incrementFn  = () => {
@@ -26,16 +28,20 @@ const Counter = () => {
     dispatchFn({type: "decrement"})
   };
 
+  // Dispatch Increment by 10 Function
   const increaseHandler = () => {
     dispatchFn({type: 'increase', number: 10})
   }
 
-  const toggleCounterHandler = () => {};
+  // Dispatch Component Visibility
+  const toggleCounterHandler = () => {
+    dispatchFn({type: 'visibility'})
+  };
 
   return (
     <main className={classes.counter}>
       <h1>Счётчик</h1>
-      <div className={classes.value}>{counter}</div>
+      {!isCounterInvisible && <div className={classes.value}>{counter}</div>}
       <div>
         <button onClick={incrementFn}>+</button>
         <button onClick={increaseHandler}>+10</button>
