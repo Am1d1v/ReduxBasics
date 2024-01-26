@@ -1,10 +1,17 @@
 import {legacy_createStore} from 'redux';
+import { createSlice } from '@reduxjs/toolkit';
+
 
 // Initial state
 const initialState = {
     counter: 0, 
     isCounterInvisible: false
 }
+
+createSlice({
+    name: "counter",
+    initialState: initialState
+})
 
 // Reducer Function
 const counterReducer = (state = initialState, action) => {
