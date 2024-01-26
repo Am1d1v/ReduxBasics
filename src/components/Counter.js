@@ -1,6 +1,7 @@
 import classes from "./Counter.module.css";
-import {useSelector, useDispatch} from "react-redux";
+import {useSelector, useDispatch, connect} from "react-redux";
 import { Component } from "react";
+
 
 
 // Functionnal Way Redux
@@ -44,11 +45,11 @@ import { Component } from "react";
 class Counter extends Component {
 
   incrementFn(){
-
+    this.props.increment();
   }
 
   decrementFn(){
-
+    this.props.decrement();
   }
 
   toggleCounterHandler(){
@@ -59,10 +60,10 @@ class Counter extends Component {
       return (
         <main className={classes.counter}>
           <h1>Счётчик</h1>
-          <div className={classes.value}>{counter}</div>
+          <div className={classes.value}>{this.props.counter}</div>
           <div>
-            <button onClick={this.incrementFn}>+</button>
-            <button onClick={this.decrementFn}>-</button>
+            <button onClick={this.incrementFn.bind(this)}>+</button>
+            <button onClick={this.decrementFn.bind(this)}>-</button>
           </div>
           <button onClick={this.toggleCounterHandler}>Спрятать / Показать</button>
         </main>
@@ -70,4 +71,17 @@ class Counter extends Component {
     };
 }
 
-export default Counter;
+const bindStateToProps =(state) => {
+  return{
+    counter: state.counter
+  }
+}
+
+const bindDispatchToProps = (dispatch) => {
+  return {
+    increment: () => dispatch({type: "increment"}),
+    decrement: () => dispatch({type: "decrement"})
+  }
+}
+
+export default connect(bindStateToProps, bindDispatchToProps)(Counter);
