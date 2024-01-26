@@ -10,7 +10,21 @@ const initialState = {
 
 createSlice({
     name: "counter",
-    initialState: initialState
+    initialState: initialState,
+    reducers: {
+        increment(state){
+            state.counter++;
+        },
+        decrement(state){
+            state.counter--;
+        },
+        increase(state, action){
+            state.counter + action.number;
+        },
+        setCounterVisibility(state){
+            state.isCounterInvisible = !state.isCounterInvisible;
+        }
+    }
 })
 
 // Reducer Function
