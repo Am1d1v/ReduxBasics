@@ -1,40 +1,73 @@
 import classes from "./Counter.module.css";
 import {useSelector, useDispatch} from "react-redux";
-
-const Counter = () => {
-
-  // Action
-  const dispatchFn = useDispatch();
-
-  // Counter State
-  const counter =  useSelector((state) => {
-    return state.counter;
-  });
+import { Component } from "react";
 
 
-  // Dispatch Increment Function
-  const incrementFn  = () => {
-    dispatchFn({type: "increment"})
-  };
+// Functionnal Way Redux
+// const Counter = () => {
 
-  // Dispatch Decrement Function
-  const decrementFn  = () => {
-    dispatchFn({type: "decrement"})
-  };
+//   // Action
+//   const dispatchFn = useDispatch();
 
-  const toggleCounterHandler = () => {};
+//   // Counter State
+//   const counter =  useSelector((state) => {
+//     return state.counter;
+//   });
 
-  return (
-    <main className={classes.counter}>
-      <h1>Счётчик</h1>
-      <div className={classes.value}>{counter}</div>
-      <div>
-        <button onClick={incrementFn}>+</button>
-        <button onClick={decrementFn}>-</button>
-      </div>
-      <button onClick={toggleCounterHandler}>Спрятать / Показать</button>
-    </main>
-  );
-};
+
+//   // Dispatch Increment Function
+//   const incrementFn  = () => {
+//     dispatchFn({type: "increment"})
+//   };
+
+//   // Dispatch Decrement Function
+//   const decrementFn  = () => {
+//     dispatchFn({type: "decrement"})
+//   };
+
+//   const toggleCounterHandler = () => {};
+
+//   return (
+//     <main className={classes.counter}>
+//       <h1>Счётчик</h1>
+//       <div className={classes.value}>{counter}</div>
+//       <div>
+//         <button onClick={incrementFn}>+</button>
+//         <button onClick={decrementFn}>-</button>
+//       </div>
+//       <button onClick={toggleCounterHandler}>Спрятать / Показать</button>
+//     </main>
+//   );
+// };
+
+// Class Way Redux
+class Counter extends Component {
+
+  incrementFn(){
+
+  }
+
+  decrementFn(){
+
+  }
+
+  toggleCounterHandler(){
+
+  }
+
+    render(){
+      return (
+        <main className={classes.counter}>
+          <h1>Счётчик</h1>
+          <div className={classes.value}>{counter}</div>
+          <div>
+            <button onClick={this.incrementFn}>+</button>
+            <button onClick={this.decrementFn}>-</button>
+          </div>
+          <button onClick={this.toggleCounterHandler}>Спрятать / Показать</button>
+        </main>
+      );
+    };
+}
 
 export default Counter;
