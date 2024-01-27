@@ -1,6 +1,6 @@
 import classes from "./Counter.module.css";
-import {useSelector, useDispatch, connect} from "react-redux";
-import { Component } from "react";
+import {useSelector, useDispatch} from "react-redux";
+import { counterActions } from "../store/inde";
 
 
 
@@ -20,22 +20,22 @@ const Counter = () => {
 
   // Dispatch Increment Function
   const incrementFn  = () => {
-    dispatchFn({type: "increment"})
+    dispatchFn(counterActions.increment())
   };
 
   // Dispatch Decrement Function
   const decrementFn  = () => {
-    dispatchFn({type: "decrement"})
+    dispatchFn(counterActions.decrement())
   };
 
   // Dispatch Increment by 10 Function
   const increaseHandler = () => {
-    dispatchFn({type: 'increase', number: 10})
+    dispatchFn(counterActions.increase())
   }
 
   // Dispatch Component Visibility
   const toggleCounterHandler = () => {
-    dispatchFn({type: 'visibility'})
+    dispatchFn(counterActions.setCounterVisibility())
   };
 
   return (
