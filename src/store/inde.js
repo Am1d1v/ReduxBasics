@@ -19,7 +19,7 @@ createSlice({
             state.counter--;
         },
         increase(state, action){
-            state.counter + action.number;
+            state.counter = state.counter + action.number;
         },
         setCounterVisibility(state){
             state.isCounterInvisible = !state.isCounterInvisible;
