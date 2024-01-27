@@ -30,7 +30,7 @@ const Counter = () => {
 
   // Dispatch Increment by 10 Function
   const increaseHandler = () => {
-    dispatchFn(counterActions.increase())
+    dispatchFn(counterActions.increase({number: 10}))
   }
 
   // Dispatch Component Visibility
